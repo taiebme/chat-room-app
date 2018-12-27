@@ -7,7 +7,7 @@ class AuthService {
         return new Promise((res, rej) => {
             // authentication process
             User.find({email, password}, (err, obj) => {
-                if (err || obj[0]) rej();
+                if (err || !obj[0]) rej();
                 res(obj[0]);
             });
         });

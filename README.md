@@ -23,7 +23,7 @@ Now angular application will run on `localhost:4200`.
   2. Run `npm start` in order to start express server on port 3000.
 
 
-Now you can launch [I'm an inline-style link](http://localhost:4200/) from your browser and register to **chat-room-app** 
+Now you can launch http://localhost:4200/ from your browser and register to **chat-room-app** 
 
 
 ### Exstras

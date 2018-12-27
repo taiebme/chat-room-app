@@ -1,0 +1,23 @@
+div.card-body.conversation {
+  height: calc(100vh - 440px);
+  overflow: auto;
+}
+
+.glyphicon.glyphicon-one-fine-dot:before {
+  content: "\25cf";
+  font-size: 1.5em;
+  color: limegreen;
+  position: absolute;
+  bottom: 7px;
+  right: 5px;
+}
+
+ul.list-group.user-list {
+  width: 100%;
+  height: calc(100vh - 312px);
+  overflow: auto;
+}
+
+.online {
+  background-color: limegreen;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "chat-rooms-app",
+  "version": "1.0.0",
+  "description": "Chat rooms application, purely JavaScript based using Socket.io and MEAN (MongoDB, Express.js, AngularJS, Node.js) stack. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect ./server.js --watch"
+  },
+  "author": "Meny Taieb",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "custom-env": "^1.0.0",
+    "express": "^4.16.4",
+    "express-bearer-token": "^2.2.0",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.0",
+    "node-cache": "^4.2.0",
+    "socket.io": "^2.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

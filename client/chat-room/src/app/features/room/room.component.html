@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-sm-12">
+    <a routerLink="/rooms" class="btn btn-link">Back to Rooms</a>
+  </div>
+</div>
+<div class="row justify-content-between">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header">
+        <div class="row float-right">
+          <div class="col-auto">
+            <span class="online badge badge-secondary">{{room?.users?.length || 0 | number}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body conversation" #messagesWrapper>
+        <div class="row" *ngFor="let message of room?.messages" >
+          <div class="col-sm-12">
+            <chat-message [chatMessage]="message"
+                          [activeUser]="activeUser"></chat-message>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <form [formGroup]="newMessageForm" (ngSubmit)="sendMessage()">
+          <div class="input-group mb-3">
+            <input type="text" formControlName="message" class="form-control"/>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="row">
+      <h6>Online users:</h6>
+    </div>
+    <div class="row">
+      <ul class="list-group user-list">
+        <li *ngFor="let user of room?.users" class="list-group-item">{{user.nickname}}</li>
+      </ul>
+    </div>
+
+
+  </div>
+
+</div>
+

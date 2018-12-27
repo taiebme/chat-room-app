@@ -9,9 +9,9 @@ const webSocket = (server) => {
     const io = socket.listen(server);
 
     // connection socket.io event
-    io.sockets.on('connection', (socket) => { /* socket object allows us to join specific clients
-                                            to chat rooms and also to catch
-                                            and emit the events.*/
+    io.sockets.on('connection', (socket) => {
+
+        // using socket in order to join specific clients, chat rooms and also catchaning and emitting events
 
         // user joined to room event
         socket.on('joinRoom', (data) => {

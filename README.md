@@ -1,33 +1,38 @@
 # Chat Room app
-Realtime chat room application with Angular, Node.js and Socket.io
+Real-time chat room application with Angular, Node.js and Socket.io using mongoDB as database-as-a-Service by mLab.
 
 ### Prerequisites
 
-Node.js and npm installed
+Make sure that you have Node and npm installed.
 
 ### Installing
 
-After downloading and extracting the project open cmd under project folder and run  
+After downloading and extracting or cloning the project follow these instructions:
 
-```
-npm install
-```
 
-After process finished make sure you have 'node_modules' folder and run
+#### Client
 
-```
-ng build
-```
+  1. Under `chat-room-app/client/chat-app` run 'npm install'.
+  2. Make sure you have angular-cli installed globally and then run `ng serve` command.
+  
+Now angular application will run on `localhost:4200`.
 
-After Angular build process finished run 
+#### Server
 
-```
-npm run backend 
-```
+  1. Under `chat-room-app/server` run 'npm install'
+  2. Run `npm start` in order to start express server on port 3000.
 
-This command will run the server under port 9090.
 
-Open your browser browser and navigate to http://localhost:9090/ and you can start using 3d-printer-queue app.
+Now you can launch `localhost:4200` from your browser and register to **chat-room-app** 
+
+
+### Exstras
+
+* Angular Authentication implemented with Http Client and Http Interceptors. this implementation involve user token that sent to server in every request.
+
+* Real-time functionality implemented with socket.io library.
+
+* MongoDB as database-as-a-Service by mLab using mongoose.
 
 ## Author
 

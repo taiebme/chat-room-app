@@ -48,6 +48,7 @@ export class RoomsComponent implements OnInit {
           (res) => {
             this.loading = false;
             this.webSocketService.addRoom(res);
+            this.createRoomForm.reset();
           },
           error => {
             this.alertService.error(error);

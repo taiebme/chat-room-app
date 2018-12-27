@@ -1,5 +1,5 @@
 # Chat Room app
-Realtime chat room application with Angular, Node.js and Socket.io
+Real-time chat room application with Angular, Node.js and Socket.io
 
 ### Prerequisites
 
@@ -7,12 +7,14 @@ Node.js and npm installed
 
 ### Installing
 
-After downloading and extracting the project open cmd under project folder and run  
+#### Client
+
+Under `chat-room-app/client/chat-app` run  
 
 ```
 npm install
 ```
-
+If 
 After process finished make sure you have 'node_modules' folder and run
 
 ```

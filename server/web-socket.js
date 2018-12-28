@@ -34,6 +34,7 @@ const webSocket = (server) => {
             let user = {nickname: data.user.nickname, _id: data.user._id};
             roomService.removeUser(data.room, user).then((userRemoved) => {
                 if (userRemoved) {
+                    socket.leave(data.room.id);
                     io.in(data.room.id).emit('user left', user);
                 }
             });

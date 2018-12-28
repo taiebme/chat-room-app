@@ -13,7 +13,7 @@ After downloading and extracting or cloning the project follow these instruction
 #### Client
 
   1. Under `chat-room-app/client/chat-app` run `npm install`.
-  2. Make sure you have angular-cli installed globally and then run `ng serve` command.
+  2. Make sure you have angular-cli globally installed and then run `ng serve` command.
   
 Now angular application will run on `localhost:4200`.
 

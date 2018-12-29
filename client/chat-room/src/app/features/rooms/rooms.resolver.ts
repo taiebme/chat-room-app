@@ -4,7 +4,7 @@ import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/rou
 import {Observable} from 'rxjs';
 import {RoomService} from '../../services';
 import {map} from 'rxjs/operators';
-import {WebSocketService} from '../../services/webSocket.service';
+import {WebSocketService} from '../../services/web-socket.service';
 
 
 @Injectable()
@@ -14,6 +14,7 @@ export class RoomsResolver implements Resolve<Room> {
     this.webSocketService.joinRooms();
   }
 
+    // retrieve room list before component initialization
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Room> {
 
     return this.roomService.getRooms()

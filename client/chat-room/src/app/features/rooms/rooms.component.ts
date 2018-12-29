@@ -3,7 +3,7 @@ import {AlertService, RoomService} from "../../services";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Room} from "../../models";
-import {WebSocketService} from "../../services/webSocket.service";
+import {WebSocketService} from "../../services/web-socket.service";
 
 
 @Component({

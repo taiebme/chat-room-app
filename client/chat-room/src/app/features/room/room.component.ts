@@ -1,93 +1,103 @@
 import {AfterViewChecked, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {ChatMessage, Room, User} from "../../models";
-import {ActivatedRoute} from "@angular/router";
-import {WebSocketService} from "../../services/webSocket.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {ChatMessage, Room, User} from '../../models';
+import {ActivatedRoute} from '@angular/router';
+import {WebSocketService} from '../../services/web-socket.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 
 @Component({
-  templateUrl: './room.component.html',
-  styleUrls: ['./room.component.css']
+    templateUrl: './room.component.html',
+    styleUrls: ['./room.component.css']
 })
-export class RoomComponent implements OnInit, OnDestroy, AfterViewChecked{
+export class RoomComponent implements OnInit, OnDestroy, AfterViewChecked {
 
-  @ViewChild("messagesWrapper", {read: ElementRef}) messagesWrapper: ElementRef;
+    @ViewChild('messagesWrapper', {read: ElementRef}) messagesWrapper: ElementRef;
 
-  public newMessageForm: FormGroup;
-  public room: Room;
-  public activeUser: User;
+    public newMessageForm: FormGroup;
+    public room: Room;
+    public activeUser: User;
 
-  constructor(private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
-              private webSocketService: WebSocketService) {
-    this.subscribeToRoomMessage();
-    this.subscribeToNewUser();
-    this.subscribeToUserLeft();
-  }
+    constructor(private formBuilder: FormBuilder,
+                private route: ActivatedRoute,
+                private webSocketService: WebSocketService) {
+        this.subscribeToRoomMessage();
+        this.subscribeToNewUser();
+        this.subscribeToUserLeft();
+    }
 
-  ngOnInit() {
-    this.newMessageForm = this.formBuilder.group({
-      message: ['']
-    });
-    this.activeUser = JSON.parse(localStorage.getItem('activeUser'));
-    this.room = this.route.snapshot.data.room;
-    // join current room
-    this.webSocketService.joinRoom(this.activeUser, this.room);
-  }
+    ngOnInit(): void {
+        // initializing of component form
+        this.newMessageForm = this.formBuilder.group({
+            message: ['']
+        });
+        // get active user from local storage
+        this.activeUser = JSON.parse(localStorage.getItem('activeUser'));
+        this.room = this.route.snapshot.data.room;
+        // join current room
+        this.webSocketService.joinRoom(this.activeUser, this.room);
+    }
 
-  @HostListener('window:beforeunload', ['$event'])
-  ngOnDestroy() {
-    this.webSocketService.leaveRoom(this.room, this.activeUser);
-  }
+    // listener for url changing, notify room subscribers about leaving the room
+    @HostListener('window:beforeunload', ['$event'])
+    ngOnDestroy(): void {
+        this.webSocketService.leaveRoom(this.room, this.activeUser);
+    }
 
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
+    // scroll chat container to bottom after view checked
+    ngAfterViewChecked(): void {
+        this.scrollToBottom();
+    }
 
-  // send socket message to the current room
-  sendMessage(): void {
-    const message = this.getMessage();
-    this.webSocketService.sendMessage({
-      roomId: this.room.id,
-      chatMessage: message
-    });
-    this.newMessageForm.reset();
-  }
+    // send socket message to the current room
+    sendMessage(): void {
+        const message = this.getMessage();
+        this.webSocketService.sendMessage({
+            roomId: this.room.id,
+            chatMessage: message
+        });
+        this.newMessageForm.reset();
+    }
 
+    // creat new ChatMessage object
+    getMessage(): ChatMessage {
+        return {
+            message: this.newMessageForm.controls.message.value,
+            nickname: this.activeUser.nickname,
+            time: new Date()
+        };
+    }
 
-  getMessage(): ChatMessage {
-    return {
-      message: this.newMessageForm.controls.message.value,
-      nickname: this.activeUser.nickname,
-      time: new Date()
-    };
-  }
+    // scroll chat container to the bottom
+    scrollToBottom(): void {
+        try {
+            this.messagesWrapper.nativeElement.scrollTop = this.messagesWrapper.nativeElement.scrollHeight;
+        } catch (err) {
+        }
+    }
 
-  scrollToBottom(): void {
-    try {
-      this.messagesWrapper.nativeElement.scrollTop = this.messagesWrapper.nativeElement.scrollHeight;
-    } catch(err) { }
-  }
+    // subscription for new room message
+    private subscribeToRoomMessage(): void {
+        this.webSocketService.newMessageReceived().subscribe((data: ChatMessage) => {
+            this.room.messages.push(data);
+            setTimeout(() => {
+                this.scrollToBottom();
+            });
+        });
+    }
 
-  //message
-  private subscribeToRoomMessage() {
-    this.webSocketService.newMessageReceived().subscribe((data: ChatMessage) => {
-      this.room.messages.push(data);
-      setTimeout(() => {this.scrollToBottom();})
-    });
-  }
+    // subscription for new user
+    private subscribeToNewUser(): void {
+        this.webSocketService.newUserReceived().subscribe((data: User) => {
+            this.room.users.push(data);
+        });
+    }
 
-  private subscribeToNewUser() {
-    this.webSocketService.newUserReceived().subscribe((data: User) => {
-      this.room.users.push(data);
-    });
-  }
-
-  private subscribeToUserLeft() {
-    this.webSocketService.userLeftReceived().subscribe((data: User) => {
-      this.room.users = this.room.users.filter((user: User) => user._id !== data._id)
-    });
-  }
+    // subscription for user left
+    private subscribeToUserLeft(): void {
+        this.webSocketService.userLeftReceived().subscribe((data: User) => {
+            this.room.users = this.room.users.filter((user: User) => user._id !== data._id)
+        });
+    }
 
 
 }

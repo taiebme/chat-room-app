@@ -1,6 +1,6 @@
 const roomService = require('./services/room.service');
 
-// using socket.io in order to implement real time app
+// using socket.io for real-time app functionality
 const socket = require('socket.io');
 
 
@@ -42,14 +42,14 @@ const webSocket = (server) => {
 
         // new room event
         socket.on('room', (data) => {
-            // emitting the 'new room' event to the clients in the room page
+            // emitting the 'new room' event to the clients in the rooms page
             io.in('rooms').emit('new room', {id: data.id, name: data.name});
         });
 
 
         // new message event
         socket.on('message', (data) => {
-            // emitting the 'new message' event to the clients in that room
+            // emitting the 'new message' event to the clients in particular room
             roomService.addMessage(data).then(() => {
                 io.in(data.roomId).emit('new message', data.chatMessage);
             });

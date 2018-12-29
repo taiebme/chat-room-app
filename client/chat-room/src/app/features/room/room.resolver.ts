@@ -12,6 +12,7 @@ export class RoomResolver implements Resolve<Room> {
   constructor(private roomService: RoomService) {
   }
 
+  // retrieve room data before component initialization
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Room> {
     return this.roomService.getRoom(route.params['roomId'])
       .pipe(

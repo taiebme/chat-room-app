@@ -9,8 +9,8 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" id="email" formControlName="email" class="form-control"
+    <label for="email2">Email</label>
+    <input type="email" id="email2" formControlName="email" class="form-control"
            [ngClass]="{ 'is-invalid': formSubmitted && form.email.errors }" email/>
     <div *ngIf="formSubmitted && form.email.errors" class="invalid-feedback">
       <div *ngIf="form.email.errors.required">Email is required</div>
@@ -18,8 +18,8 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" id="password" formControlName="password" class="form-control"
+    <label for="password2">Password</label>
+    <input type="password" id="password2" formControlName="password" class="form-control"
            [ngClass]="{ 'is-invalid': formSubmitted && form.password.errors }" />
     <div *ngIf="formSubmitted && form.password.errors" class="invalid-feedback">
       <div *ngIf="form.password.errors.required">Password is required</div>

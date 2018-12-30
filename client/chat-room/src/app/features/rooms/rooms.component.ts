@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AlertService, RoomService} from "../../services";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Room} from "../../models";
-import {WebSocketService} from "../../services/web-socket.service";
+import {AlertService, RoomService} from '../../services';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Room} from '../../models';
+import {WebSocketService} from '../../services/web-socket.service';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class RoomsComponent implements OnInit {
   ngOnInit() {
     this.rooms = this.route.snapshot.data.rooms;
     this.createRoomForm = this.formBuilder.group({
-      roomName: ['', Validators.required]
+      roomName: ['']
     });
   }
 

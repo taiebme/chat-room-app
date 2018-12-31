@@ -7,7 +7,7 @@ import {AlertService, AuthService} from '../../../../services';
 
 @Component({
   selector: 'sign-in',
-  templateUrl: 'signIn.component.html'
+  templateUrl: 'sign-in.component.html'
 })
 export class SignInComponent implements OnInit {
   signInForm: FormGroup;

@@ -20,4 +20,6 @@ ul.list-group.user-list {
 
 .online {
   background-color: limegreen;
+  float: right;
+  margin-top: 5px;
 }

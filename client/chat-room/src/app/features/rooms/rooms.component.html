@@ -2,7 +2,7 @@
   <div class="col-sm-8">
     <h4>Choose Room</h4>
     <div class="list-group">
-      <a *ngFor="let room of rooms" [routerLink]="['/chatroom', room.id]" class="list-group-item list-group-item-action">{{room.name}}</a>
+      <a *ngFor="let room of rooms | orderBy: 'name'" [routerLink]="['/chatroom', room.id]" class="list-group-item list-group-item-action">{{room.name}}</a>
     </div>
   </div>
   <div class="col-sm-3">
@@ -25,6 +25,4 @@
   </div>
 
 </div>
-
-<!--| orderBy:'name'-->
 

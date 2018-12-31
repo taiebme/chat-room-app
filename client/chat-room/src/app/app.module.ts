@@ -20,6 +20,7 @@ import {RoomComponent} from './features/room';
 import {WebSocketService} from './services/web-socket.service';
 import {RoomsResolver} from './features/rooms';
 import {RoomResolver} from './features/room';
+import {OrderModule} from "ngx-order-pipe";
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import {RoomResolver} from './features/room';
     ],
     imports: [
         BrowserModule,
+        OrderModule,
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes)

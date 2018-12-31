@@ -2,10 +2,10 @@ import {Routes} from '@angular/router';
 import {RoomsComponent} from './features/rooms';
 
 import {AuthGuard} from './guards';
-import {HomeComponent} from "./features/home";
-import {RoomComponent} from "./features/room";
-import {RoomsResolver} from "./features/rooms";
-import {RoomResolver} from "./features/room";
+import {HomeComponent} from './features/home';
+import {RoomComponent} from './features/room';
+import {RoomsResolver} from './features/rooms';
+import {RoomResolver} from './features/room';
 
 export const appRoutes: Routes = [
   {path: '', component: RoomsComponent, canActivate: [AuthGuard], resolve: { rooms: RoomsResolver}},

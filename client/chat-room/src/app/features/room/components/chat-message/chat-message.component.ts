@@ -1,5 +1,5 @@
-import {Component, Input} from "@angular/core";
-import {ChatMessage, User} from "../../../models";
+import {Component, Input} from '@angular/core';
+import {ChatMessage} from '../../../../models';
 
 
 @Component({
@@ -9,7 +9,7 @@ import {ChatMessage, User} from "../../../models";
 })
 export class ChatMessageComponent {
   @Input() chatMessage: ChatMessage;
-  @Input() activeUser: User;
+  @Input() nickname: String;
 
   constructor() {
   }

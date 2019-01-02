@@ -1,4 +1,4 @@
-<div [ngClass]="{'self float-right': activeUser.nickname === chatMessage.nickname}" class="card"
+<div [ngClass]="{'self float-right': nickname === chatMessage.nickname}" class="card"
      style="width: fit-content; max-width: 18rem; min-width: 10rem;">
   <div class="card-body">
     <h6 class="small card-subtitle mb-2 text-muted">{{chatMessage.nickname}}</h6>
@@ -6,3 +6,7 @@
     <h6 class="msg-time card-subtitle mb-2 small text-muted">{{chatMessage.time | date : 'MMM d, hh:mm'}}</h6>
   </div>
 </div>
+
+
+
+

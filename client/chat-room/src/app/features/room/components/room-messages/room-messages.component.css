@@ -1,0 +1,4 @@
+div.card-body.conversation {
+  height: calc(100vh - 440px);
+  overflow: auto;
+}

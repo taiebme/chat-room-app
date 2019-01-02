@@ -15,12 +15,15 @@ import {appRoutes} from './app.routing';
 import {RoomsComponent} from './features/rooms';
 import {HomeComponent} from './features/home';
 import {RoomService} from './services';
-import {ChatMessageComponent} from './features/room/components/chat-message.component';
 import {RoomComponent} from './features/room';
 import {WebSocketService} from './services/web-socket.service';
 import {RoomsResolver} from './features/rooms';
 import {RoomResolver} from './features/room';
-import {OrderModule} from "ngx-order-pipe";
+import {OrderModule} from 'ngx-order-pipe';
+import {RoomMessagesComponent} from './features/room/components/room-messages/room-messages.component';
+import {SendMessageComponent} from './features/room/components/send-message/send-message.component';
+import {ChatMessageComponent} from './features/room/components/chat-message/chat-message.component';
+import {UserListComponent} from './features/room/components/user-list/user-list.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +34,10 @@ import {OrderModule} from "ngx-order-pipe";
         RoomsComponent,
         AlertComponent,
         RoomComponent,
-        ChatMessageComponent
+        RoomMessagesComponent,
+        SendMessageComponent,
+        ChatMessageComponent,
+        UserListComponent
     ],
     imports: [
         BrowserModule,

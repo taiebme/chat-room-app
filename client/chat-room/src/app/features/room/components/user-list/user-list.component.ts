@@ -27,10 +27,15 @@ export class UserListComponent {
 
     // subscription for user left
     private subscribeToUserLeft(): void {
+        let userIndex = 0;
         this.webSocketService.userLeftReceived().subscribe((data: User) => {
-            this.users = this.users.filter((user: User) => user._id !== data._id);
+            for (const user of this.users) {
+                if (user._id === data._id) {
+                    break;
+                }
+                userIndex++;
+            }
+            this.users.splice(userIndex, 1);
         });
     }
-
-
 }

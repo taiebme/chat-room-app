@@ -1,0 +1,14 @@
+<h4>Add new room</h4>
+<form [formGroup]="createRoomForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="roomName">Room Name</label>
+    <input type="text" id="roomName" formControlName="roomName" class="form-control"
+           [ngClass]="{ 'is-invalid': formSubmitted && form.roomName.errors }"/>
+    <div *ngIf="formSubmitted && form.roomName.errors" class="invalid-feedback">
+      <div *ngIf="form.roomName.errors.required">Room name is required</div>
+    </div>
+  </div>
+  <div class="form-group float-right">
+    <button [disabled]="loading" class="btn btn-primary btn-sm">Add Room</button>
+  </div>
+</form>

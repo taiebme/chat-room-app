@@ -1,0 +1,4 @@
+<h4>Choose Room</h4>
+<div class="list-group room-list">
+  <a *ngFor="let room of rooms | orderBy: 'name'" [routerLink]="['/chatroom', room.id]" class="list-group-item list-group-item-action">{{room.name}}</a>
+</div>

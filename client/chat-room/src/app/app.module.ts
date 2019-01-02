@@ -24,6 +24,8 @@ import {RoomMessagesComponent} from './features/room/components/room-messages/ro
 import {SendMessageComponent} from './features/room/components/send-message/send-message.component';
 import {ChatMessageComponent} from './features/room/components/chat-message/chat-message.component';
 import {UserListComponent} from './features/room/components/user-list/user-list.component';
+import {AddRoomComponent} from './features/rooms/components/add-room/add-room.component';
+import {RoomListComponent} from './features/rooms/components/room-list/room-list.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +39,9 @@ import {UserListComponent} from './features/room/components/user-list/user-list.
         RoomMessagesComponent,
         SendMessageComponent,
         ChatMessageComponent,
-        UserListComponent
+        UserListComponent,
+        AddRoomComponent,
+        RoomListComponent
     ],
     imports: [
         BrowserModule,

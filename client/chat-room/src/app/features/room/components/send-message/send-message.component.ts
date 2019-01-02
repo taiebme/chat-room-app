@@ -1,13 +1,12 @@
-import {AfterViewChecked, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {ChatMessage, Room, User} from '../../../../models';
+import {Component, Input, OnInit} from '@angular/core';
+import {ChatMessage} from '../../../../models';
 import {WebSocketService} from '../../../../services/web-socket.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 
 @Component({
     selector: 'send-message',
-    templateUrl: './send-message.component.html',
-    styleUrls: ['./send-message.component.css']
+    templateUrl: './send-message.component.html'
 })
 export class SendMessageComponent implements OnInit {
     @Input() nickname: string;
